@@ -177,6 +177,17 @@ button {
   max-width: 250px;
 }
 
+.container_price {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.discount__price {
+  background-color: rgb(255, 134, 134);
+  border-radius: 10px;
+}
+
 .product-card h2,
 .product-card h3,
 .product-card p {
