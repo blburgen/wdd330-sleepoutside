@@ -21,3 +21,9 @@ export function setClick(selector, callback) {
   });
   qs(selector).addEventListener("click", callback);
 }
+
+export async function  getTentData  (){
+  let response = await fetch("../json/tents.json")
+  let data = await response.json()
+    return data
+}
