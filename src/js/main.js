@@ -4,9 +4,9 @@ const productListing = document.querySelector(".product-list");
 
 async function renderCartContents() {
   let tentData = await getTentData();
-  const filteredhtmlItems = tentData.filter((item) => item.ProductPageUrl);
-  const htmlItems = filteredhtmlItems.map((item) => cartItemTemplate(item));
-
+  const htmlItems = tentData.map((item) =>
+    item.ProductPageUrl ? cartItemTemplate(item) : null,
+  );
   productListing.innerHTML = htmlItems.join("");
 }
 
