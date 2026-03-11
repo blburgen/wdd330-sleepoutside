@@ -21,7 +21,7 @@ function cartItemTemplate(item) {
   }
   const newItem = `
         <li class="product-card">
-            <a href=${item.ProductPageUrl}>
+            <a href="product_pages/?product=${item.Id}">
                 <img
                 src=${item.Image}
                 alt=${item.Name}
