@@ -9,31 +9,45 @@ export default class ProductDetails{
 
   async init(){
     // use the datasource to get the details for the current product. findProductById will return a promise! use await or .then() to process it
+    this.product = await this.dataSource.findProductById(this.productId);
     // the product details are needed before rendering the HTML
+    this.renderProductDetails();
     // once the HTML is rendered, add a listener to the Add to Cart button
     // Notice the .bind(this). This callback will not work if the bind(this) is missing. Review the readings from this week on 'this' to understand why.
     document.getElementById('addToCart')
-      .addEventListener('click', this.addToCart.bind(this));
+      .addEventListener('click', this.addProductToCart.bind(this));
   }
 
-  addProductToCart(product){
+  addProductToCart(){
     let cart = getLocalStorage("so-cart");
     
     if (cart) {
-      cart.push(product);
+      cart.push(this.product);
       setLocalStorage("so-cart", cart);
     } else {
       cart = [];
-      cart.push(product);
+      cart.push(this.product);
       setLocalStorage("so-cart", cart);
     }
-    async function addToCartHandler(e) {
-    const product = await dataSource.findProductById(e.target.dataset.id);
-    addProductToCart(product);
-    }
-  } 
-  renderProductDetails(){
-
   }
+   
+  renderProductDetails(){
+    document.querySelector('h2').textContent = this.product.Brand.Name;
+    document.querySelector('h3').textContent = this.product.NameWithoutBrand;
+
+    const productImage = document.getElementById('productImage');
+    productImage.src = this.product.Image;
+    productImage.alt = this.product.NameWithoutBrand;
+
+    document.getElementById('productPrice').textContent = this.product.FinalPrice;
+    document.getElementById('productColor').textContent = this.product.Colors[0].ColorName;
+    document.getElementById('productDesc').innerHTML = this.product.DescriptionHtmlSimple;
+
+    document.getElementById('addToCart').dataset.id = this.product.Id;
+  }
+
+  
 }
+
+
 
