@@ -23,10 +23,12 @@ export default class ProductDetails{
     
     if (cart) {
       cart.push(this.product);
+      console.log(cart.length);
       setLocalStorage("so-cart", cart);
     } else {
       cart = [];
       cart.push(this.product);
+      console.log(cart.length);
       setLocalStorage("so-cart", cart);
     }
   }

@@ -1,7 +1,15 @@
-import { getTentData } from "./utils.mjs";
 
+import ProductData from "./ProductData.mjs";
+import ProductList from "./ProductList.mjs";
+
+const dataSource = new ProductData("tents");
 const productListing = document.querySelector(".product-list");
 
+const myList = new ProductList("tents", dataSource, productListing);
+
+myList.init();
+
+/*
 async function renderCartContents() {
   let tentData = await getTentData();
   const htmlItems = tentData.map((item) =>
@@ -39,3 +47,4 @@ function cartItemTemplate(item) {
 }
 
 renderCartContents();
+*/
