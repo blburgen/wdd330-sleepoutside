@@ -39,7 +39,10 @@ export default class ProductDetails{
     productImage.src = this.product.Image;
     productImage.alt = this.product.NameWithoutBrand;
 
+    const productDiscount = Math.round((this.product.FinalPrice / this.product.SuggestedRetailPrice) * 100 - 100);
+
     document.getElementById('productPrice').textContent = this.product.FinalPrice;
+    document.getElementById('productDiscount').textContent = `${productDiscount}% off Retail Price`;
     document.getElementById('productColor').textContent = this.product.Colors[0].ColorName;
     document.getElementById('productDesc').innerHTML = this.product.DescriptionHtmlSimple;
 
