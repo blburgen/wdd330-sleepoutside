@@ -1,6 +1,7 @@
 
 import ProductData from "./ProductData.mjs";
 import ProductList from "./ProductList.mjs";
+import { getLocalStorage } from "./utils.mjs";
 
 const dataSource = new ProductData("tents");
 const productListing = document.querySelector(".product-list");
@@ -8,6 +9,17 @@ const productListing = document.querySelector(".product-list");
 const myList = new ProductList("tents", dataSource, productListing);
 
 myList.init();
+
+function updateCartCount() {
+  const cartItems = getLocalStorage("so-cart") || [];
+  const badge = document.querySelector(".cart-count");
+
+  if (badge) {
+    badge.textContent = cartItems.length;
+  }
+}
+
+updateCartCount();
 
 /*
 async function renderCartContents() {

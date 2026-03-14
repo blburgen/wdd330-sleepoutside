@@ -3,8 +3,10 @@ import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
   if (!cartItems || cartItems.length === 0) {
+    console.log("Your Cart is Empty");
     document.querySelector(".product-list").innerHTML = "Your Cart is Empty";
   } else {
+    console.log("You have " + cartItems.length + " In Your Cart")
     const htmlItems = cartItems.map((item) => cartItemTemplate(item));
     document.querySelector(".product-list").innerHTML = htmlItems.join("");
     addRemoveListeners();
