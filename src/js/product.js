@@ -2,33 +2,15 @@ import { getParam } from "./utils.mjs";
 import ProductData from "./ProductData.mjs";
 import ProductDetails from "./ProductDetails.mjs";
 
+// 1. Initialize the data source for the "tents" category
 const dataSource = new ProductData("tents");
+
+// 2. Get the product ID from the URL parameters (e.g., ?product=880RR)
 const productId = getParam("product");
 
-// console.log(dataSource.findProductById(productId));
-
-// function addProductToCart(product) {
-//   let cart = getLocalStorage("so-cart");
-
-//   if (cart) {
-//     cart.push(product);
-//     setLocalStorage("so-cart", cart);
-//   } else {
-//     cart = [];
-//     cart.push(product);
-//     setLocalStorage("so-cart", cart);
-//   }
-// }
-// add to cart button event handler
-// async function addToCartHandler(e) {
-//   const product = await dataSource.findProductById(e.target.dataset.id);
-//   addProductToCart(product);
-// }
-
-// // add listener to Add to Cart button
-// document
-//   .getElementById("addToCart")
-//   .addEventListener("click", addToCartHandler);
-
+// 3. Create an instance of ProductDetails
 const product = new ProductDetails(productId, dataSource);
+
+// 4. Initialize the product details logic
+// This will fetch the data, render the HTML, and add the event listeners
 product.init();

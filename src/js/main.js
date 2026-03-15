@@ -1,41 +1,20 @@
-import { getTentData } from "./utils.mjs";
+import ProductData from "./ProductData.mjs";
+import ProductList from "./ProductList.mjs";
 
-const productListing = document.querySelector(".product-list");
+// Initialize the data source for the "tents" category
+const dataSource = new ProductData("tents");
 
-async function renderCartContents() {
-  let tentData = await getTentData();
-  const htmlItems = tentData.map((item) =>
-    item.ProductPageUrl ? cartItemTemplate(item) : null,
-  );
-  productListing.innerHTML = htmlItems.join("");
+// Select the HTML element where the list will be rendered
+const listElement = document.querySelector(".product-list");
+
+// Create an instance of the ProductList class
+// We pass the category, data source, and the target DOM element
+const listing = new ProductList("tents", dataSource, listElement);
+
+// Initialize the listing to fetch data and render the cards
+// We check if the element exists first to avoid console errors
+if (listElement) {
+  listing.init();
+} else {
+  console.error("Error: Target element '.product-list' not found in the DOM.");
 }
-
-function cartItemTemplate(item) {
-  let hasDiscount = false;
-  let discountAmount = 0;
-  if (item.FinalPrice < item.SuggestedRetailPrice) {
-    hasDiscount = true;
-    discountAmount = Math.round(
-      (item.FinalPrice / item.SuggestedRetailPrice) * 100 - 100,
-    );
-  }
-  const newItem = `
-        <li class="product-card">
-            <a href="product_pages/?product=${item.Id}">
-                <img
-                src=${item.Image}
-                alt=${item.Name}
-              />
-                <h3 class="card__brand">${item.Name}</h3>
-                <h2 class="card__name">${item.NameWithoutBrand}</h2>
-                <div class="container_price">
-                  <p class="product-card__price">$${item.FinalPrice}</p>
-                  ${hasDiscount ? `<p class="discount__price">${discountAmount}% off</p>` : ""}
-                </div>
-            </a>
-        </li>`;
-
-  return newItem;
-}
-
-renderCartContents();
