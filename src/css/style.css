@@ -233,6 +233,15 @@ button {
   margin-top: 0;
 }
 
+.cart-total {
+  display: flex;
+  justify-content: end;
+}
+
+.cart-total.hide {
+  display: none;
+}
+
 .cart-card .card__name {
   grid-row: 1;
   grid-column: 2;
