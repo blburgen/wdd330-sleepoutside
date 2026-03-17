@@ -1,6 +1,6 @@
 import { renderListWithTemplate } from "./utils.mjs";
 
-function cartItemTemplate(item) {
+function productCardTemplate(item) {
   let hasDiscount = false;
   let discountAmount = 0;
   if (item.FinalPrice < item.SuggestedRetailPrice) {
