@@ -16,6 +16,8 @@ export default class ProductDetails{
     // Notice the .bind(this). This callback will not work if the bind(this) is missing. Review the readings from this week on 'this' to understand why.
     document.getElementById('addToCart')
       .addEventListener('click', this.addProductToCart.bind(this));
+    console.log(this.product.Category);
+    document.querySelector("#product-breadcrumbs").textContent = this.product.Category;
   }
 
   addProductToCart(){
@@ -37,7 +39,7 @@ export default class ProductDetails{
     document.querySelector('h3').textContent = this.product.NameWithoutBrand;
 
     const productImage = document.getElementById('productImage');
-    productImage.src = this.product.Image;
+    productImage.src = this.product.Images.PrimaryLarge;
     productImage.alt = this.product.NameWithoutBrand;
 
     const productDiscount = Math.round((this.product.FinalPrice / this.product.SuggestedRetailPrice) * 100 - 100);

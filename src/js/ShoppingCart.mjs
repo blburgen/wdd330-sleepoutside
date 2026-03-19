@@ -5,7 +5,7 @@ function cartItemTemplate(item) {
   <button class="cart-card__remove" type="button" data-id="${item.Id}" aria-label="Remove ${item.Name} from cart">X</button>
   <a href="#" class="cart-card__image">
     <img
-      src="${item.Image}"
+      src="${item.Images.PrimaryLarge}"
       alt="${item.Name}"
     />
   </a>

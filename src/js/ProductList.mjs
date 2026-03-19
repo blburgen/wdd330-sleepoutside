@@ -13,7 +13,7 @@ function productCardTemplate(item) {
         <li class="product-card">
             <a href="/product_pages/?product=${item.Id}">
                 <img
-                src=${item.Image}
+                src=${item.Images.PrimaryLarge}
                 alt=${item.Name}
               />
                 <h3 class="card__brand">${item.Name}</h3>
@@ -28,6 +28,7 @@ function productCardTemplate(item) {
   return newItem;
 }
 
+
 export default class ProductList {
   constructor(category, dataSource, listElement) {
     this.category = category;
@@ -36,8 +37,12 @@ export default class ProductList {
   }
 
   async init() {
-    const list = await this.dataSource.getData();
+    const list = await this.dataSource.getData(this.category);
     this.renderList(list);
+    document.querySelector(".title").textContent = this.category;
+    const listlength = list.length;
+    const bread = `${this.category} --> (${listlength} items)`;
+    document.querySelector("#product-list-breadcrumbs").textContent = bread;
   }
 
   renderList(list) {
