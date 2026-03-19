@@ -11,7 +11,7 @@ function productCardTemplate(item) {
   }
   const newItem = `
         <li class="product-card">
-            <a href="../product_pages/?product=${item.Id}">
+            <a href="/product_pages/?product=${item.Id}">
                 <img
                 src=${item.Image}
                 alt=${item.Name}
