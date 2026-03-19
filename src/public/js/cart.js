@@ -17,7 +17,7 @@ function renderCartContents() {
   }
 }
 
-function cartItemTemplate(item) {
+export function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
   <button class="cart-card__remove" type="button" data-id="${item.Id}" aria-label="Remove ${item.Name} from cart">X</button>
   <a href="#" class="cart-card__image">
@@ -37,7 +37,7 @@ function cartItemTemplate(item) {
   return newItem;
 }
 
-function addRemoveListeners() {
+export function addRemoveListeners() {
   document.querySelectorAll(".cart-card__remove").forEach((button) => {
     button.addEventListener("click", handleRemoveItem);
   });
@@ -52,13 +52,13 @@ function handleRemoveItem(event) {
   renderCartContents();
 }
 
-function setCardTotal(total) {
+export function setCardTotal(total) {
   const cartPriceEl = document.querySelector(".cart-total");
   cartPriceEl.classList.remove("hide");
   cartPriceEl.textContent = `Total: $${total}`;
 }
 
-function hideCartTotal() {
+export function hideCartTotal() {
   const cartPriceEl = document.querySelector(".cart-total");
   cartPriceEl.classList.add("hide");
 }
