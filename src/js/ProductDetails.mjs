@@ -37,7 +37,7 @@ export default class ProductDetails{
     document.querySelector('h3').textContent = this.product.NameWithoutBrand;
 
     const productImage = document.getElementById('productImage');
-    productImage.src = this.product.Image;
+    productImage.src = this.product.Images.PrimaryLarge;
     productImage.alt = this.product.NameWithoutBrand;
 
     const productDiscount = Math.round((this.product.FinalPrice / this.product.SuggestedRetailPrice) * 100 - 100);
