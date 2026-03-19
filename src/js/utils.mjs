@@ -65,4 +65,14 @@ export async function loadHeaderFooter(){
   const footerTemplate = await loadTemplate("../partials/footer.html");
   const footerElement = document.querySelector("#main-footer");
   renderWithTemplate(footerTemplate, footerElement);
+  updateCartCount();
+}
+
+export async function updateCartCount() {
+  const cartItems = getLocalStorage("so-cart") || [];
+  const badge = document.querySelector(".cart-count");
+
+  if (badge) {
+    badge.textContent = cartItems.length;
+  }
 }
