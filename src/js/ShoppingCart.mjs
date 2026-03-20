@@ -1,11 +1,12 @@
 import { getLocalStorage, setLocalStorage, renderListWithTemplate, updateCartCount } from "./utils.mjs";
 
 function cartItemTemplate(item) {
+
   return `<li class="cart-card divider">
   <button class="cart-card__remove" type="button" data-id="${item.Id}" aria-label="Remove ${item.Name} from cart">X</button>
   <a href="#" class="cart-card__image">
     <img
-      src="${item.Images.PrimaryLarge}"
+      src="${item.Image}"
       alt="${item.Name}"
     />
   </a>
