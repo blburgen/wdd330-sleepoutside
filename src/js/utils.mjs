@@ -13,7 +13,7 @@ export function getLocalStorage(key) {
 export function setLocalStorage(key, data) {
   localStorage.setItem(key, JSON.stringify(data));
 }
-// set a listener for both touchend and click
+// set a listener for both touchend and click 
 export function setClick(selector, callback) {
   qs(selector).addEventListener("touchend", (event) => {
     event.preventDefault();
@@ -39,8 +39,13 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
   if (clear) {
     parentElement.innerHTML = "";
   }
-  const htmlStrings = list.map(templateFn);
-  parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
+  let total = 0
+    list.forEach(item=> {
+      let {li,itemTotalPrice} = templateFn(item)
+      total =+ itemTotalPrice
+      parentElement.appendChild(li)
+    })
+    return total
 }
 
 export function renderWithTemplate(template, parentElement, data, callback){
