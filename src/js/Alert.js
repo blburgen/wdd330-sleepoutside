@@ -1,6 +1,6 @@
 export default class Alert {
   async init() {
-    const response = await fetch("/json/alerts.json");
+    const response = await fetch("/alerts.json");
     const alerts = await response.json();
 
     if (!alerts.length) return;

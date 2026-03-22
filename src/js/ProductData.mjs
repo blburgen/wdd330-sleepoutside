@@ -29,8 +29,23 @@ export default class ProductData {
     }
 
     async findProductById(id) {
-        const response = await fetch(`${baseURL}product/${id}`);
-        const data = await convertToJson(response);
-        return data.Result;
+        try {
+            const response = await fetch(`${baseURL}product/${id}`);
+            const data = await convertToJson(response);
+            return data.Result;
+        } catch (err) {
+            const productModules = import.meta.glob("../public/json/*.json", { eager: true });
+            for (const mod of Object.values(productModules)) {
+                const data = mod.default;
+                const list = Array.isArray(data) ? data : data.Result || [];
+                const found = list.find((p) => p.Id === id);
+                if (found) {
+                    return found.Images && found.Images.PrimaryLarge
+                        ? found
+                        : { ...found, Images: { PrimaryLarge: found.Image } };
+                }
+            }
+            return null;
+        }
     }
 }
