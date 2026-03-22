@@ -40,7 +40,8 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
     parentElement.innerHTML = "";
   }
 
-    list.map(templateFn)
+    const htmlStrings = list.map(templateFn);
+    parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 
 }
 
