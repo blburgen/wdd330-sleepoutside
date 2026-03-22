@@ -34,15 +34,15 @@ export default class ProductData {
             const data = await convertToJson(response);
             return data.Result;
         } catch (err) {
-            const productModules = import.meta.glob("../public/json/*.json", { eager: true });
+            const productModules =
+                import.meta.glob("../public/json/*.json");
             for (const mod of Object.values(productModules)) {
                 const data = mod.default;
                 const list = Array.isArray(data) ? data : data.Result || [];
                 const found = list.find((p) => p.Id === id);
                 if (found) {
-                    return found.Images && found.Images.PrimaryLarge
-                        ? found
-                        : { ...found, Images: { PrimaryLarge: found.Image } };
+                    return found.Images && found.Images.PrimaryLarge ?
+                        found : {...found, Images: { PrimaryLarge: found.Image } };
                 }
             }
             return null;
