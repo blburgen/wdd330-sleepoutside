@@ -2,87 +2,87 @@ import { getLocalStorage, setLocalStorage, renderListWithTemplate, updateCartCou
 
 function cartItemTemplate(item) {
 
-    let quantity = 1
-    let itemTotalPrice = item.FinalPrice
-    sessionStorage.setItem("quantity",quantity )
-    sessionStorage.setItem("total",)
-    //! Convert this do obj to access coresponding btns to update quantity
-    const li = document.createElement("li")
-    const removeBtn = document.createElement("button")
-    const imageLink = document.createElement("a")
-    const itemImage = document.createElement("img")
-    const itemNameLink = document.createElement("a")
-    const itemName = document.createElement("h2")
-    const colorDescription = document.createElement("p")
-    const quantityControlsDiv = document.createElement("div")
-    const increaseBtn = document.createElement("btn")
-    const quantityOfItems = document.createElement("p")
-    const decreaseBtn = document.createElement("btn")
-    const itemPrice = document.createElement("p")
+    // let quantity = 1
+    // let itemTotalPrice = item.FinalPrice
+    // sessionStorage.setItem("quantity",quantity )
+    // sessionStorage.setItem("total",)
+    // //! Convert this do obj to access coresponding btns to update quantity
+    // const li = document.createElement("li")
+    // const removeBtn = document.createElement("button")
+    // const imageLink = document.createElement("a")
+    // const itemImage = document.createElement("img")
+    // const itemNameLink = document.createElement("a")
+    // const itemName = document.createElement("h2")
+    // const colorDescription = document.createElement("p")
+    // const quantityControlsDiv = document.createElement("div")
+    // const increaseBtn = document.createElement("btn")
+    // const quantityOfItems = document.createElement("p")
+    // const decreaseBtn = document.createElement("btn")
+    // const itemPrice = document.createElement("p")
 
-    li.appendChild(removeBtn)
+    // li.appendChild(removeBtn)
 
-    imageLink.appendChild(itemImage)
-    li.appendChild(imageLink)
+    // imageLink.appendChild(itemImage)
+    // li.appendChild(imageLink)
 
-    itemNameLink.appendChild(itemName)
-    li.appendChild(itemNameLink)
+    // itemNameLink.appendChild(itemName)
+    // li.appendChild(itemNameLink)
 
-    li.appendChild(colorDescription)
-    quantityControlsDiv.appendChild(decreaseBtn)
-    quantityControlsDiv.appendChild(quantityOfItems)
-    quantityControlsDiv.appendChild(increaseBtn)
-    li.appendChild(quantityControlsDiv)
-    li.appendChild(itemPrice)
+    // li.appendChild(colorDescription)
+    // quantityControlsDiv.appendChild(decreaseBtn)
+    // quantityControlsDiv.appendChild(quantityOfItems)
+    // quantityControlsDiv.appendChild(increaseBtn)
+    // li.appendChild(quantityControlsDiv)
+    // li.appendChild(itemPrice)
 
-    li.classList.add("cart-card")
-    li.classList.add("divider")
+    // li.classList.add("cart-card")
+    // li.classList.add("divider")
 
-    removeBtn.classList.add("cart-card__remove")
-    removeBtn.type = "button"
-    removeBtn.setAttribute("data-id",item.id)
-    removeBtn.setAttribute("aria-label",`Remove ${item.Name} from cart`)
-    removeBtn.textContent = "X"
+    // removeBtn.classList.add("cart-card__remove")
+    // removeBtn.type = "button"
+    // removeBtn.setAttribute("data-id",item.id)
+    // removeBtn.setAttribute("aria-label",`Remove ${item.Name} from cart`)
+    // removeBtn.textContent = "X"
 
-    imageLink.classList.add("cart-card__image")
-    imageLink.setAttribute("href","#")
-    itemImage.setAttribute("src",item.Images.PrimaryLarge)
-    itemImage.setAttribute("alt",item.Name)
+    // imageLink.classList.add("cart-card__image")
+    // imageLink.setAttribute("href","#")
+    // itemImage.setAttribute("src",item.Images.PrimaryLarge)
+    // itemImage.setAttribute("alt",item.Name)
 
-    itemNameLink.setAttribute("href","#")
-    itemName.classList.add("card__name")
-    itemName.textContent = item.Name
+    // itemNameLink.setAttribute("href","#")
+    // itemName.classList.add("card__name")
+    // itemName.textContent = item.Name
 
-    colorDescription.classList.add("cart-card__color")
-    colorDescription.textContent = item.Colors[0].ColorName
+    // colorDescription.classList.add("cart-card__color")
+    // colorDescription.textContent = item.Colors[0].ColorName
 
-    quantityControlsDiv.classList.add("cart-card__quantity-controls")
+    // quantityControlsDiv.classList.add("cart-card__quantity-controls")
 
-    decreaseBtn.classList.add("cart-card__quantity-control_btn")
-    decreaseBtn.textContent = "-"
+    // decreaseBtn.classList.add("cart-card__quantity-control_btn")
+    // decreaseBtn.textContent = "-"
 
-    quantityOfItems.classList.add("cart-card__quantity")
-    quantityOfItems.textContent = quantity
+    // quantityOfItems.classList.add("cart-card__quantity")
+    // quantityOfItems.textContent = quantity
 
-    increaseBtn.classList.add("cart-card__quantity-control_btn")
-    increaseBtn.textContent = "+"
+    // increaseBtn.classList.add("cart-card__quantity-control_btn")
+    // increaseBtn.textContent = "+"
     
-    itemPrice.classList.add("cart-card__price")
-    itemPrice.textContent = item.FinalPrice * quantity
+    // itemPrice.classList.add("cart-card__price")
+    // itemPrice.textContent = item.FinalPrice * quantity
 
-    decreaseBtn.addEventListener("click",()=>{
-        quantity --;
-        quantityOfItems.textContent = quantity
-        itemTotalPrice = quantity * item.FinalPrice
-    })
+    // decreaseBtn.addEventListener("click",()=>{
+    //     quantity --;
+    //     quantityOfItems.textContent = quantity
+    //     itemTotalPrice = quantity * item.FinalPrice
+    // })
 
-    increaseBtn.addEventListener("click",()=>{
-        quantity ++;
-        quantityOfItems.textContent = quantity
-        itemTotalPrice = quantity * item.FinalPrice
-    })
+    // increaseBtn.addEventListener("click",()=>{
+    //     quantity ++;
+    //     quantityOfItems.textContent = quantity
+    //     itemTotalPrice = quantity * item.FinalPrice
+    // })
 
-    return {li,itemTotalPrice}
+    // return {li,itemTotalPrice}
 
     return `
     <li class="cart-card divider">
@@ -122,9 +122,9 @@ export default class ShoppingCart {
             hideCartTotal();
             this.listElement.innerHTML = "Your Cart is Empty";
         } else {
-            let total = renderListWithTemplate(cartItemTemplate, this.listElement, list, "afterbegin", true);
+            renderListWithTemplate(cartItemTemplate, this.listElement, list, "afterbegin", true);
 
-            // const total = list.reduce((sum, item) => sum + item.FinalPrice, 0);
+            const total = list.reduce((sum, item) => sum + item.FinalPrice, 0);
             console.log(total)
             setCardTotal(total);
             this.addRemoveListeners();

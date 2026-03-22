@@ -39,13 +39,9 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
   if (clear) {
     parentElement.innerHTML = "";
   }
-  let total = 0
-    list.forEach(item=> {
-      let {li,itemTotalPrice} = templateFn(item)
-      total =+ itemTotalPrice
-      parentElement.appendChild(li)
-    })
-    return total
+
+    list.map(templateFn)
+
 }
 
 export function renderWithTemplate(template, parentElement, data, callback){
