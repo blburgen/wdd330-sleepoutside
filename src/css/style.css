@@ -267,14 +267,13 @@ button {
   grid-column: 3;
   justify-self: end;
 }
-.cart-card__quantity-controls{
+.cart-card__quantity-controls {
   grid-row: 3;
   grid-column: 3;
   display: flex;
   justify-content: space-between;
 }
-.cart-card__quantity-control_btn{
-
+.cart-card__quantity-control_btn {
   border: red;
 
   padding: 5px 10px;
