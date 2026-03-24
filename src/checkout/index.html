@@ -1,26 +1,69 @@
 <!doctype html>
 
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="UTF-8" />
 
-    <title>Sleep Outside | Checkout</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
+  <title>Sleep Outside | Checkout</title>
 
-  <body>
-    <header class="divider" id="main-header"></header>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
 
-    <main class="divider">
-      <section class="products">
-        <h2>Review & Place your Order</h2>
-      </section>
-    </main>
+<body>
+  <header class="divider" id="main-header"></header>
 
-    <footer id="main-footer"></footer>
-    <script type="module" src="../js/main.js"></script>
-  </body>
+  <main class="divider">
+    <section class="products">
+      <h2>Review & Place your Order</h2>
+      <form>
+        <fieldset>
+          <legend>User Information</legend>
+          <label for="fname">First Name
+            <input type="text" name="fname" id="fname" />
+          </label>
+          <label for="lname">Last Name
+            <input type="text" name="lname" id="lname" />
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend>Adress</legend>
+          <label for="streetname">Street Address
+            <input type="text" name="streetname" id="streetname" />
+          </label>
+          <label for="cityname">City
+            <input type="text" name="cityname" id="cityname" />
+          </label>
+          <label for="state">State
+            <input type="text" name="state" id="state" />
+          </label>
+          <label for="zipcode">Zip
+            <input type="text" name="zipcode" id="zipcode" />
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend>Payment Method</legend>
+          <label for="cardnumber">Credit Card Number
+            <input type="text" name="cardnumber" id="cardnumber" />
+          </label>
+          <label for="expiredate">Expiration Date
+            <input type="text" name="expiredate" id="expiredate" />
+          </label>
+          <label for="scode">Security Code
+            <input type="text" name="scode" id="scode" />
+          </label>
+        </fieldset>
+        <button type="submit">Place Order</button>
+      </form>
+    </section>
+    <section>
+      <h2>Summary</h2>
+    </section>
+  </main>
+
+  <footer id="main-footer"></footer>
+  <script type="module" src="../js/main.js"></script>
+</body>
 </html>

@@ -65,7 +65,7 @@ export default class ShoppingCart {
         updateCartCount();
     }
     setQuantity() {
-        let elements = document.querySelectorAll(".cart-card__quantity").forEach(el => {
+        document.querySelectorAll(".cart-card__quantity").forEach(el => {
             let id = el.dataset.id
             let quantity = sessionStorage.getItem(id)
             if (!quantity) {
@@ -115,10 +115,10 @@ function setCardTotal() {
         let quantity = sessionStorage.getItem(item.Id)
         return sum + (price * quantity)
     }, 0)
-
+    localStorage.setItem("total",total)
     const cartPriceEl = document.querySelector(".cart-total");
     cartPriceEl.classList.remove("hide");
-    cartPriceEl.textContent = `Total: $${total}`;
+    cartPriceEl.textContent = `Total: $${total.toFixed(2)}`;
 }
 
 function hideCartTotal() {
