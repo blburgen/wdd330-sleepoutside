@@ -70,6 +70,19 @@ export async function loadHeaderFooter(){
   updateCartCount();
 }
 
+export function alertMessage(message, scroll = true) {
+  const alert = document.createElement('div');
+  alert.classList.add('alert');
+  alert.innerHTML = `<p>${message}</p><span>X</span>`;
+  alert.addEventListener('click', (e) => {
+    if (e.target.tagName === 'SPAN') {
+      document.querySelector('main').removeChild(alert);
+    }
+  });
+  document.querySelector('main').prepend(alert);
+  if (scroll) window.scrollTo(0, 0);
+}
+
 export async function updateCartCount() {
   const cartItems = getLocalStorage("so-cart") || [];
   const badge = document.querySelector(".cart-count");
