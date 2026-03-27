@@ -313,6 +313,69 @@ button {
   }
 }
 
+.newsletter {
+  margin: 2rem 1rem;
+  padding: 1.5rem;
+  background-color: var(--secondary-color);
+  color: white;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.newsletter h2 {
+  font-family: var(--font-headline);
+  font-size: 1.8em;
+  margin-bottom: 0.5rem;
+}
+
+.newsletter p {
+  color: var(--light-grey);
+}
+
+.newsletter__form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.newsletter__form input[type="email"] {
+  padding: 0.5em 0.75em;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  flex: 1 1 220px;
+  max-width: 360px;
+}
+
+.newsletter__form input[type="email"]:focus {
+  outline: 2px solid var(--primary-color);
+}
+
+.newsletter__form button {
+  margin: 0;
+  background-color: var(--primary-color);
+  color: var(--dark-grey);
+  border-radius: 4px;
+  flex: 0 0 auto;
+}
+
+.newsletter__message {
+  margin-top: 0.75rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
 footer {
   font-size: var(--small-font);
   padding: 1em;
