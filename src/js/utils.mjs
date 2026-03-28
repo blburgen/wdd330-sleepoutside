@@ -87,6 +87,10 @@ export async function updateCartCount() {
   const cartItems = getLocalStorage("so-cart") || [];
   const badge = document.querySelector(".cart-count");
 
+  badge.classList.remove('updated-item');
+  void badge.offsetWidth;
+  badge.classList.add('updated-item');
+
   if (badge) {
     badge.textContent = cartItems.length;
   }
