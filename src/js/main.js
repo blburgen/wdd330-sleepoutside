@@ -11,12 +11,12 @@ const newsletterMessage = document.getElementById("newsletter-message");
 
 if (newsletterForm !=null){
   newsletterForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const email = newsletterForm.email.value.trim();
-  newsletterMessage.textContent = `Thanks! ${email} has been signed up for our newsletter.`;
-  newsletterMessage.hidden = false;
-  newsletterForm.reset();
-});
+    e.preventDefault();
+    const email = newsletterForm.email.value.trim();
+    newsletterMessage.textContent = `Thanks! ${email} has been signed up for our newsletter.`;
+    newsletterMessage.hidden = false;
+    newsletterForm.reset();
+  });
 
 }
 
