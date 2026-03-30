@@ -28,17 +28,23 @@ function productCardTemplate(item) {
   return newItem;
 }
 
-
 export default class ProductList {
-  constructor(category, dataSource, listElement) {
+  constructor(category, dataSource, listElement, query) {
     this.category = category;
     this.dataSource = dataSource;
     this.listElement = listElement;
+    this.query = query;
   }
 
   async init() {
     const list = await this.dataSource.getData(this.category);
-    this.renderList(list);
+    const searchedItemd = await this.dataSource.getAllData(this.category);
+    if (this.query) {
+      this.renderList(searchedItemd);
+    } else {
+      this.renderList(list);
+    }
+
     document.querySelector(".title").textContent = this.category;
     const listlength = list.length;
     const bread = `${this.category} --> (${listlength} items)`;

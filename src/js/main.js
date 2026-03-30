@@ -9,7 +9,7 @@ alert.init();
 const newsletterForm = document.getElementById("newsletter-form");
 const newsletterMessage = document.getElementById("newsletter-message");
 
-if (newsletterForm !=null){
+if (newsletterForm != null) {
   newsletterForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const email = newsletterForm.email.value.trim();
@@ -17,6 +17,4 @@ if (newsletterForm !=null){
     newsletterMessage.hidden = false;
     newsletterForm.reset();
   });
-
 }
-
