@@ -471,17 +471,16 @@ footer {
   width: 100%;
 }
 
-
 /* cart animation */
 
 @keyframes highlight {
-  0% { 
+  0% {
     transform: translateY(1000px) scale(3);
-    background-color: blue; 
+    background-color: blue;
   }
-  100% { 
+  100% {
     transform: translateY(0) scale(1);
-    background-color: red; 
+    background-color: red;
   }
 }
 
